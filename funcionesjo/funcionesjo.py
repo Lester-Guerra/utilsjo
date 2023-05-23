@@ -1,3 +1,4 @@
+import locale
 import calendar
 from typing import List, Tuple
 from datetime import datetime, timedelta
@@ -199,7 +200,7 @@ def mes_anio_by_abreviacion(abreviacion: str, mayuscula: bool=False, mmaa: bool=
         "Nov":"noviembre",
         "Dic":"diciembre"}
     try:
-        mes, anio = abreviacion.split("-")
+        anio, mes = abreviacion.split("-")
         if mmaa:
             mes, anio = anio, mes
         mes = ABREVIATURAS[mes]
@@ -224,8 +225,26 @@ def anio_mes(fecha: str, formato='%Y-%m-%d') -> str:
     ValueError - Si la fecha no cumple con el formato.
     """
     try:
+        # Guardar la configuración de idioma actual
+        old_locale = locale.getlocale(locale.LC_TIME)
+        
+        # Cambiar la configuración de idioma a español
+        locale.setlocale(locale.LC_TIME, ("es_ES", "UTF-8"))
+        
         fecha_datetime = datetime.strptime(fecha, formato)
-        return fecha_datetime.strftime('%Y-%b')
+        
+        # Formatear la fecha y capitalizar el nombre del mes
+        resultado = fecha_datetime.strftime('%Y-%b')
+        
+        # Restaurar la configuración de idioma original
+        locale.setlocale(locale.LC_TIME, old_locale)
+
+        # Convierte el nombre del mes a la forma correcta (la primera letra en mayúsculas, el resto en minúsculas)
+        anio, mes = resultado.split('-')
+        mes = mes.capitalize()
+        mes = mes.replace('.', '')
+        
+        return f"{anio}-{mes}"
     except ValueError:
         raise ValueError("La fecha no cumple con el formato.")
 

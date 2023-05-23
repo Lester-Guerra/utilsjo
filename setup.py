@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='funcionesjo',
-    version='0.1.1',
+    version='0.1.4',
     author='Luis Alfredo Alvarado Rodríguez',
     description='',
     long_description='',
