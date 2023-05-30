@@ -169,7 +169,7 @@ def mes_by_ordinal(ordinal: str | int, abreviado = True, mes_anterior = False) -
             nombre_mes = nombre_mes[0:3]
         return nombre_mes
     except:
-        return "NaN"
+        raise ValueError("La entrada no es válida.")
 
 def mes_anio_by_abreviacion(abreviacion: str, mayuscula: bool=False, mmaa: bool=False) -> str:
     """
