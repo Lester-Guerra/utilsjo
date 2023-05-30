@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='funcionesjo',
-    version='0.2.3',
+    version='0.2.4',
     author='Luis Alfredo Alvarado Rodríguez',
     author_email='laalvarado@ine.gob.gt',
     description='Una colección de funciones para la manipulación de fechas.',

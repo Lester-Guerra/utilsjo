@@ -142,7 +142,7 @@ def date_mini(fecha: str, formato='%Y-%m-%d') -> str:
     except ValueError:
         raise ValueError("La fecha o el formato proporcionado no es válido.")
 
-def mes_by_ordinal(ordinal: str, abreviado=True, mes_anterior=False) -> str:
+def mes_by_ordinal(ordinal: str | int, abreviado = True, mes_anterior = False) -> str:
     """
     Esta función retorna el nombre del mes correspondiente al número ordinal proporcionado.
 
@@ -169,7 +169,7 @@ def mes_by_ordinal(ordinal: str, abreviado=True, mes_anterior=False) -> str:
             nombre_mes = nombre_mes[0:3]
         return nombre_mes
     except:
-        raise ValueError("La entrada no es válida.")
+        return "NaN"
 
 def mes_anio_by_abreviacion(abreviacion: str, mayuscula: bool=False, mmaa: bool=False) -> str:
     """
