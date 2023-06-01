@@ -3,6 +3,7 @@ import calendar
 from typing import List, Tuple
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
+from typing import Union
 
 def hoy(formato="%Y-%m-%d", inicio_de_mes=False) -> str:
     """
@@ -142,7 +143,7 @@ def date_mini(fecha: str, formato='%Y-%m-%d') -> str:
     except ValueError:
         raise ValueError("La fecha o el formato proporcionado no es válido.")
 
-def mes_by_ordinal(ordinal: str | int, abreviado = True, mes_anterior = False) -> str:
+def mes_by_ordinal(ordinal: Union[str, int], abreviado = True, mes_anterior = False) -> str:
     """
     Esta función retorna el nombre del mes correspondiente al número ordinal proporcionado.
 
